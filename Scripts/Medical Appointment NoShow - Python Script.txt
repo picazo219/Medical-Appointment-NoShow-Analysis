@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+
+# 1. Data load
+ruta = "C:/.../KaggleV2-May-2016.csv" 
+df = pd.read_csv(ruta)
+
+# 2. Rename columns
+df.rename(columns={'Hipertension': 'Hypertension', 'Handcap': 'Handicap', 'No-show': 'NoShow'}, inplace=True)
+
+# 3. Date type conversion
+df['ScheduledDay'] = pd.to_datetime(df['ScheduledDay'], errors='coerce')
+df['AppointmentDay'] = pd.to_datetime(df['AppointmentDay'], errors='coerce')
+
+# 4. Remove null values
+df = df.dropna(subset=['ScheduledDay', 'AppointmentDay'])
+df = df[df['Age'] >= 0]
+
+# 5. Calculate waiting days
+df['WaitingDays'] = (df['AppointmentDay'].dt.date - df['ScheduledDay'].dt.date).apply(lambda x: x.days)
+df = df[df['WaitingDays'] >= 0]
+
+# 6. Age range
+bins = [0, 12, 18, 30, 60, 115]
+labels = ['Child', 'Teen', 'Young Adult', 'Adult', 'Senior']
+df['AgeGroup'] = pd.cut(df['Age'], bins=bins, labels=labels, include_lowest=True)
+
+# 7. Binary column
+df['NoShowBinary'] = df['NoShow'].apply(lambda x: 1 if x == 'Yes' else 0)
+
+# 8. Final Data Assignment
+dataset = df
