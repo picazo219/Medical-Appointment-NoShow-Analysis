@@ -32,3 +32,8 @@ High no-show rates disrupt clinical workflows, increase waiting times for other 
 * Targeted Reminders: Implement a specialized SMS/Call campaign for the Teen and Young Adult segments.
 * Scheduling Optimization: Reduce the "Lead Time" for chronic patients (Hypertension/Diabetes) to under 7 days to maximize attendance.
 * Geographic Focus: Prioritize operational improvements in top no-show neighborhoods like Santos Dumont and Santa Cecília.
+
+---
+**Author:** David Picazo  
+**Field:** Clinical Efficiency Specialist | Data Analyst  
+**Contact:** [da.picazo@gmail.com](mailto:da.picazo@gmail.com)
